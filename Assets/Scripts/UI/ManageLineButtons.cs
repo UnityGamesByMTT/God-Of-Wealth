@@ -73,8 +73,8 @@ public class ManageLineButtons : MonoBehaviour, IPointerEnterHandler,IPointerExi
 {
     switch (buttonName)
     {
-        case "Button1": return 1;
-        case "Button2": return 0;
+        case "Button1": return 0;
+        case "Button2": return 1;
         case "Button3": return 2;
         case "Button4": return 3;
         case "Button5": return 4;

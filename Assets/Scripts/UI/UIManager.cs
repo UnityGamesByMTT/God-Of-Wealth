@@ -381,11 +381,16 @@ public class UIManager : MonoBehaviour
 
     internal void InitialiseUIData(string SupportUrl, string AbtImgUrl, string TermsUrl, string PrivacyUrl, Paylines symbolsText)
     {
+                Debug.Log("Init UI 3");
+
         if (Support_Button) Support_Button.onClick.RemoveAllListeners();
         if (Support_Button) Support_Button.onClick.AddListener(delegate { UrlButtons(SupportUrl); });
+                Debug.Log("Init UI 4");
 
         StartCoroutine(DownloadImage(AbtImgUrl));
         PopulateSymbolsPayout(symbolsText);
+                Debug.Log("Init UI 5");
+
         SetMultiplierinfo();
     }
 

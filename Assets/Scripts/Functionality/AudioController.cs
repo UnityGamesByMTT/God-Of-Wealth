@@ -84,7 +84,9 @@ public class AudioController : MonoBehaviour
         }
         StopWLAaudio();
         audioPlayer_wl.clip = clips[index];
+        Debug.Log("STOP SPIN INDEX :"+ index);
         audioPlayer_wl.Play();
+
 
     }
 

@@ -151,8 +151,8 @@ public class SlotBehaviour : MonoBehaviour
     [SerializeField] private List<GameObject> GoldCoinSpawningParticals;
     [SerializeField] private GameObject AllOfKindAnimParent, AllOfKIndAnim;
 
-   private  bool GoldWildCompleted;
-   private bool IsAllofKindAnimCompleted;
+    private bool GoldWildCompleted;
+    private bool IsAllofKindAnimCompleted;
 
 
     private void Start()
@@ -371,6 +371,7 @@ public class SlotBehaviour : MonoBehaviour
 
     internal void SetInitialUI()
     {
+        Debug.Log("Init UI 1");
         BetCounter = 0;
         if (LineBet_text) LineBet_text.text = SocketManager.initialData.Bets[BetCounter].ToString();
         if (TotalBet_text) TotalBet_text.text = (SocketManager.initialData.Bets[BetCounter] * Lines).ToString();
@@ -379,8 +380,10 @@ public class SlotBehaviour : MonoBehaviour
         if (TotalLines_text) TotalLines_text.text = "9";
         currentBalance = SocketManager.playerdata.Balance;
         currentTotalBet = SocketManager.initialData.Bets[BetCounter] * Lines;
-        _bonusManager.PopulateWheel(SocketManager.bonusdata);
+        //_bonusManager.PopulateWheel(SocketManager.bonusdata);
         CompareBalance();
+        Debug.Log("Init UI 2");
+
         uiManager.InitialiseUIData(SocketManager.initUIData.AbtLogo.link, SocketManager.initUIData.AbtLogo.logoSprite, SocketManager.initUIData.ToULink, SocketManager.initUIData.PopLink, SocketManager.initUIData.paylines);
     }
     #endregion
@@ -542,11 +545,23 @@ public class SlotBehaviour : MonoBehaviour
         {
             StopSpin_Button.gameObject.SetActive(true);
         }
-        for (int i = 0; i < numberOfSlots; i++)
+        if (IsTurboOn)
         {
-            InitializeTweening(Slot_Transform[i]);
-            yield return new WaitForSeconds(0.1f);
+            for (int i = 0; i < numberOfSlots; i++)
+            {
+                InitializeTweening(Slot_Transform[i]);
+            }
         }
+        else
+        {
+            for (int i = 0; i < numberOfSlots; i++)
+            {
+                InitializeTweening(Slot_Transform[i]);
+                yield return new WaitForSeconds(0.1f);
+            }
+        }
+
+
 
         if (!IsFreeSpin)
         {
@@ -574,7 +589,7 @@ public class SlotBehaviour : MonoBehaviour
         }
         else
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 15; i++)
             {
                 yield return new WaitForSeconds(0.1f);
                 if (StopSpinToggle)
@@ -591,6 +606,7 @@ public class SlotBehaviour : MonoBehaviour
         }
         StopSpinToggle = false;
 
+
         yield return alltweens[^1].WaitForCompletion();
         KillAllTweens();
 
@@ -602,21 +618,22 @@ public class SlotBehaviour : MonoBehaviour
         {
             SpinDelay = 0.2f;
         }
-        if(SocketManager.resultData.goldWildCol.Count>0)
+        if (SocketManager.resultData.goldWildCol.Count > 0)
         {
-            GoldWildCompleted=false;
-           StartCoroutine(CheckForGoldWildColumn());
-           yield return new WaitUntil(() => GoldWildCompleted);
+            GoldWildCompleted = false;
+            StartCoroutine(CheckForGoldWildColumn());
+            yield return new WaitUntil(() => GoldWildCompleted);
         }
-        
+
         if (SocketManager.resultData.featureAll)
         {
-            IsAllofKindAnimCompleted=false;
+            IsAllofKindAnimCompleted = false;
             StartCoroutine(CheckForAllOfKind());
             yield return new WaitUntil(() => IsAllofKindAnimCompleted);
         }
-        else{
-        CheckPayoutLineBackend(SocketManager.resultData.linesToEmit, SocketManager.resultData.FinalsymbolsToEmit, SocketManager.resultData.jackpot);
+        else
+        {
+            CheckPayoutLineBackend(SocketManager.resultData.linesToEmit, SocketManager.resultData.FinalsymbolsToEmit, SocketManager.resultData.jackpot);
         }
         CheckPopups = true;
         if (TotalWin_text) TotalWin_text.text = SocketManager.playerdata.currentWining.ToString("F3");
@@ -727,19 +744,19 @@ public class SlotBehaviour : MonoBehaviour
             {
                 go.SetActive(false);
             }
-            GoldWildCompleted=true;
+            GoldWildCompleted = true;
 
         }
     }
     private IEnumerator CheckForAllOfKind()
     {
-            AllOfKindAnimParent.SetActive(true);
-            AllOfKIndAnim.SetActive(true);
+        AllOfKindAnimParent.SetActive(true);
+        AllOfKIndAnim.SetActive(true);
 
-            yield return new WaitForSeconds(4.5f);
-            AllOfKindAnimParent.SetActive(false);
-            AllOfKIndAnim.SetActive(false);
-            IsAllofKindAnimCompleted=true;
+        yield return new WaitForSeconds(4.5f);
+        AllOfKindAnimParent.SetActive(false);
+        AllOfKIndAnim.SetActive(false);
+        IsAllofKindAnimCompleted = true;
     }
 
     internal void CheckBonusGame()
@@ -900,10 +917,16 @@ public class SlotBehaviour : MonoBehaviour
         alltweens[index] = slotTransform.DOLocalMoveY(-855 + 100, 0.5f).SetEase(Ease.OutElastic);
         if (!isStop)
         {
+            Debug.Log("playing stop sound");
+            audioController.PlayWLAudio("spinStop");
             yield return new WaitForSeconds(0.2f);
         }
         else
         {
+            if (index == alltweens.Count - 1)
+            {
+                audioController.PlayWLAudio("spinStop");
+            }
             yield return null;
         }
     }

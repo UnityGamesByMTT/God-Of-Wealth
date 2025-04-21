@@ -11,6 +11,7 @@ using UnityEngine.Networking;
 public class UIManager : MonoBehaviour
 {
     [Header("Settings UI")]
+    [SerializeField] private Button Settings_Button;
 
     [SerializeField]
     private Button Exit_Button;
@@ -200,6 +201,10 @@ public class UIManager : MonoBehaviour
 
         if (PaytableExit_Button) PaytableExit_Button.onClick.RemoveAllListeners();
         if (PaytableExit_Button) PaytableExit_Button.onClick.AddListener(delegate { ClosePopup(PaytablePopup_Object); });
+      
+        if (Settings_Button) Settings_Button.onClick.RemoveAllListeners();
+        if (Settings_Button) Settings_Button.onClick.AddListener(delegate { OpenPopup(SettingsPopup_Object); });
+
 
         if (SettingsExit_Button) SettingsExit_Button.onClick.RemoveAllListeners();
         if (SettingsExit_Button) SettingsExit_Button.onClick.AddListener(delegate { ClosePopup(SettingsPopup_Object); });
@@ -438,7 +443,7 @@ public class UIManager : MonoBehaviour
             {
                 string Description = paylines.symbols[i].description.ToString();
 
-                string modifiedDescription = Description.Replace("\n", "\n<sprite=0>");
+                string modifiedDescription = Description.Replace("\n ", "\n<sprite=0>");
                 if (Scatter_Text) Scatter_Text.text = "<sprite=0>" + modifiedDescription;
                 ScatterFreeSpinstext.Text5x.text = paylines.symbols[i].Multiplier[0][1].ToString() + " FREE SPINS";
                 ScatterFreeSpinstext.Text4x.text = paylines.symbols[i].Multiplier[1][1].ToString() + " FREE SPINS";
@@ -546,14 +551,14 @@ public class UIManager : MonoBehaviour
         {
             // if (MusicOn_Object) MusicOn_Object.SetActive(true);
             // if (MusicOff_Object) MusicOff_Object.SetActive(false);
-            musicImage.sprite = Enable_Sound_sprite;
+           // musicImage.sprite = Enable_Sound_sprite;
             audioController.ToggleMute(false, "bg");
         }
         else
         {
             // if (MusicOn_Object) MusicOn_Object.SetActive(false);
             // if (MusicOff_Object) MusicOff_Object.SetActive(true);
-            musicImage.sprite = Disable_Sound_sprite;
+           // musicImage.sprite = Disable_Sound_sprite;
             audioController.ToggleMute(true, "bg");
         }
     }

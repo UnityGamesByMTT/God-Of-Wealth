@@ -618,6 +618,9 @@ public class SlotBehaviour : MonoBehaviour
         {
             SpinDelay = 0.2f;
         }
+        if (TotalWin_text) TotalWin_text.text = SocketManager.playerdata.currentWining.ToString("F3");
+        BalanceTween?.Kill();
+        if (Balance_text) Balance_text.text = SocketManager.playerdata.Balance.ToString("F3");
         if (SocketManager.resultData.goldWildCol.Count > 0)
         {
             GoldWildCompleted = false;
@@ -636,9 +639,9 @@ public class SlotBehaviour : MonoBehaviour
             CheckPayoutLineBackend(SocketManager.resultData.linesToEmit, SocketManager.resultData.FinalsymbolsToEmit, SocketManager.resultData.jackpot);
         }
         CheckPopups = true;
-        if (TotalWin_text) TotalWin_text.text = SocketManager.playerdata.currentWining.ToString("F3");
-        BalanceTween?.Kill();
-        if (Balance_text) Balance_text.text = SocketManager.playerdata.Balance.ToString("F3");
+        // if (TotalWin_text) TotalWin_text.text = SocketManager.playerdata.currentWining.ToString("F3");
+        // BalanceTween?.Kill();
+        // if (Balance_text) Balance_text.text = SocketManager.playerdata.Balance.ToString("F3");
 
         currentBalance = SocketManager.playerdata.Balance;
         CheckWinPopups();

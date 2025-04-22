@@ -43,8 +43,7 @@ public class SlotBehaviour : MonoBehaviour
     [SerializeField]
     private Button AutoSpin_Button;
     [SerializeField] private Button AutoSpinStop_Button;
-    [SerializeField]
-    private Button MaxBet_Button;
+
     [SerializeField]
     private Button TBetPlus_Button;
     [SerializeField]
@@ -96,10 +95,6 @@ public class SlotBehaviour : MonoBehaviour
 
     [SerializeField]
     private UIManager uiManager;
-
-    [Header("BonusGame Popup")]
-    [SerializeField]
-    private BonusController _bonusManager;
 
     [Header("Free Spins Board")]
     [SerializeField]
@@ -167,9 +162,6 @@ public class SlotBehaviour : MonoBehaviour
 
         if (TBetMinus_Button) TBetMinus_Button.onClick.RemoveAllListeners();
         if (TBetMinus_Button) TBetMinus_Button.onClick.AddListener(delegate { ChangeBet(false); });
-
-        if (MaxBet_Button) MaxBet_Button.onClick.RemoveAllListeners();
-        if (MaxBet_Button) MaxBet_Button.onClick.AddListener(MaxBet);
 
         if (StopSpin_Button) StopSpin_Button.onClick.RemoveAllListeners();
         if (StopSpin_Button) StopSpin_Button.onClick.AddListener(() => { audioController.PlayButtonAudio(); StopSpinToggle = true; StopSpin_Button.gameObject.SetActive(false); });
@@ -371,7 +363,6 @@ public class SlotBehaviour : MonoBehaviour
 
     internal void SetInitialUI()
     {
-        Debug.Log("Init UI 1");
         BetCounter = 0;
         if (LineBet_text) LineBet_text.text = SocketManager.initialData.Bets[BetCounter].ToString();
         if (TotalBet_text) TotalBet_text.text = (SocketManager.initialData.Bets[BetCounter] * Lines).ToString();
@@ -382,7 +373,6 @@ public class SlotBehaviour : MonoBehaviour
         currentTotalBet = SocketManager.initialData.Bets[BetCounter] * Lines;
         //_bonusManager.PopulateWheel(SocketManager.bonusdata);
         CompareBalance();
-        Debug.Log("Init UI 2");
 
         uiManager.InitialiseUIData(SocketManager.initUIData.AbtLogo.link, SocketManager.initUIData.AbtLogo.logoSprite, SocketManager.initUIData.ToULink, SocketManager.initUIData.PopLink, SocketManager.initUIData.paylines);
     }
@@ -762,11 +752,6 @@ public class SlotBehaviour : MonoBehaviour
         IsAllofKindAnimCompleted = true;
     }
 
-    internal void CheckBonusGame()
-    {
-        _bonusManager.StartBonus((int)SocketManager.resultData.BonusStopIndex);
-    }
-
     //generate the payout lines generated 
     private void CheckPayoutLineBackend(List<int> LineId, List<string> points_AnimString, double jackpot = 0)
     {
@@ -874,11 +859,9 @@ public class SlotBehaviour : MonoBehaviour
     void ToggleButtonGrp(bool toggle)
     {
         if (SlotStart_Button) SlotStart_Button.interactable = toggle;
-        if (MaxBet_Button) MaxBet_Button.interactable = toggle;
         if (AutoSpin_Button) AutoSpin_Button.interactable = toggle;
         if (TBetMinus_Button) TBetMinus_Button.interactable = toggle;
-        if (TBetPlus_Button) TBetPlus_Button.interactable = toggle;
-        if (Turbo_Button) Turbo_Button.interactable = toggle;
+      //  if (Turbo_Button) Turbo_Button.interactable = toggle;
     }
 
     //start the icons animation

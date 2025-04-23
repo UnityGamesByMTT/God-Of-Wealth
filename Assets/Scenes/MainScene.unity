@@ -3800,58 +3800,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textureArray:
-  - {fileID: 21300000, guid: 93d7fa248a1054502a6c66578deb22d7, type: 3}
   - {fileID: 21300000, guid: 6757586e7bf334a56994a73cbd5843b9, type: 3}
-  - {fileID: 21300000, guid: c217210d7418a4c668e9600fc29bf670, type: 3}
   - {fileID: 21300000, guid: 6ee4c302564704982a3a4e02db2909d6, type: 3}
-  - {fileID: 21300000, guid: d71f674ee47ec471b84b7a554bfd231b, type: 3}
   - {fileID: 21300000, guid: 34a7406cf00c24840aa8869f9e3dfc9a, type: 3}
-  - {fileID: 21300000, guid: e7596142722f64ad6a2297e8646516c0, type: 3}
   - {fileID: 21300000, guid: 5659da474bf854f2d8bfe90e8874304c, type: 3}
-  - {fileID: 21300000, guid: 94c8dec2618ed460c81d7092f36bda32, type: 3}
   - {fileID: 21300000, guid: 8a8d6313e7b2e4f7ebc91ed7b85cd39e, type: 3}
-  - {fileID: 21300000, guid: 8e863daba2e754c5cb03d3498cc2d477, type: 3}
   - {fileID: 21300000, guid: 26476bd7c77d24b13b010570c47cc00a, type: 3}
-  - {fileID: 21300000, guid: 21a584d61ca774b6b8e0be93339b76f8, type: 3}
   - {fileID: 21300000, guid: 98aaf9bbc0ff34a33956944f3645e15c, type: 3}
-  - {fileID: 21300000, guid: 30f8ceb37bfae460798d75e08140889c, type: 3}
   - {fileID: 21300000, guid: 5779edbb66a8d42be9bba9c34766bbbf, type: 3}
-  - {fileID: 21300000, guid: 11b72aba88a27449f8da65bdc144813d, type: 3}
   - {fileID: 21300000, guid: 7172ffcca0e9242c99913136c75b2abf, type: 3}
-  - {fileID: 21300000, guid: 4705e06f9d8e949c5afcb481f37d75dd, type: 3}
   - {fileID: 21300000, guid: 4d02b8beaf150415e92c0c7fb30850f5, type: 3}
-  - {fileID: 21300000, guid: 0d95ce4b0ca9741f3bf7c1c147c222d6, type: 3}
   - {fileID: 21300000, guid: ad8668c4b6f23476aa5e7a9d01c1e1a1, type: 3}
-  - {fileID: 21300000, guid: 681986ab3adcb40659eecd249193c068, type: 3}
   - {fileID: 21300000, guid: 9634af97d74b94217afb8418c3c339c7, type: 3}
-  - {fileID: 21300000, guid: 65921cbd18d794ac6bea8882d91653e7, type: 3}
   - {fileID: 21300000, guid: dd910c6cdde284ada80dc820e11dae3a, type: 3}
-  - {fileID: 21300000, guid: 17d952af6477b43ca881cb0f49bcb77a, type: 3}
   - {fileID: 21300000, guid: f4b71d46765784fbeb5716b088037d69, type: 3}
-  - {fileID: 21300000, guid: 564aae99557454ad3940a46c7c9ade34, type: 3}
   - {fileID: 21300000, guid: eedaa97e404b04e08857b4e1c2731e6a, type: 3}
-  - {fileID: 21300000, guid: 0f51df2fe014d41f5a374b132c80dc9c, type: 3}
   - {fileID: 21300000, guid: 66da3158cda394bf1b31b205bb74e68b, type: 3}
-  - {fileID: 21300000, guid: eea713c3cbac54f5f94daa31275e36e8, type: 3}
   - {fileID: 21300000, guid: f5d3c05ad954c430083e925f8d70fef3, type: 3}
-  - {fileID: 21300000, guid: bd812eef4333b481caa613d973dc5263, type: 3}
   - {fileID: 21300000, guid: f378337c27fee4abc8ddf1c570e65cc4, type: 3}
-  - {fileID: 21300000, guid: 0bb65621d8fba41bc8592fbc1d2143ed, type: 3}
   - {fileID: 21300000, guid: 97516087dd3514311861789f0631cc11, type: 3}
-  - {fileID: 21300000, guid: 2ccfb7c86729d45fa90f2e127cc8c727, type: 3}
   - {fileID: 21300000, guid: 9f6232857e9d74debac4c843b1a11fa7, type: 3}
-  - {fileID: 21300000, guid: e02c96aa130284806b85f9d9437ce8ae, type: 3}
   - {fileID: 21300000, guid: fd2c39f9ed99f44bd9576915c5a07aea, type: 3}
-  - {fileID: 21300000, guid: 2b461ea57ad534c31a587303141d3afd, type: 3}
   - {fileID: 21300000, guid: 24c7eb07751294cb7aca1d0eaaa36d74, type: 3}
-  - {fileID: 21300000, guid: 5223935cf066346b49d4f0051f029558, type: 3}
   - {fileID: 21300000, guid: b4468d8d28f08479da62484b842bebbd, type: 3}
-  - {fileID: 21300000, guid: ce39f098d16ee448e92bf6bac7f81369, type: 3}
   - {fileID: 21300000, guid: 7bb70f299bee548118444949be72ef75, type: 3}
-  - {fileID: 21300000, guid: ad46c1d703eef4f5386544a824fe2d28, type: 3}
   - {fileID: 21300000, guid: bcafb6d8a622940629d00727da913dce, type: 3}
-  - {fileID: 21300000, guid: 00fa4404339964df6aec10337516cba1, type: 3}
   - {fileID: 21300000, guid: 7eee983afe61e4b638fc7b94c140505b, type: 3}
+  - {fileID: 21300000, guid: d70a3cafc64e24b70b172a41ee903df7, type: 3}
   - {fileID: 21300000, guid: d70a3cafc64e24b70b172a41ee903df7, type: 3}
   rendererDelegate: {fileID: 129863490}
   useSharedMaterial: 1
@@ -3859,7 +3834,7 @@ MonoBehaviour:
   StartOnAwake: 0
   StartonEnable: 1
   currentAnimationState: 0
-  AnimationSpeed: 30
+  AnimationSpeed: 10
   delayBetweenLoop: 0
 --- !u!114 &129863490
 MonoBehaviour:
@@ -11106,7 +11081,6 @@ MonoBehaviour:
   NoQuit_Button: {fileID: 315966287}
   CrossQuit_Button: {fileID: 1023606837}
   audioController: {fileID: 1030743558465206379}
-  m_AwakeGameButton: {fileID: 0}
   GameExit_Button: {fileID: 545237143}
   slotManager: {fileID: 2046803210}
   socketManager: {fileID: 500036492}
@@ -18453,8 +18427,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textureArray:
-  - {fileID: 21300000, guid: 4467afd6954ca421384a2ad427efca34, type: 3}
-  - {fileID: 21300000, guid: 59f8c3011c71b4fa6b37e7163aa7facc, type: 3}
   - {fileID: 21300000, guid: 5467cb15169e847b7bcdb2a1d7edee39, type: 3}
   - {fileID: 21300000, guid: de53d626ac9bc4553b7e81ce96934def, type: 3}
   - {fileID: 21300000, guid: ff8330bf87da449e292ceede7b6cc9a0, type: 3}
@@ -18465,30 +18437,21 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6d0e74ceba23c43b992624be2b3b9355, type: 3}
   - {fileID: 21300000, guid: a9042be4d8a424ff1ad142adcbf49b62, type: 3}
   - {fileID: 21300000, guid: 91ed4a80b40204f8294c6c490146d2f1, type: 3}
-  - {fileID: 21300000, guid: 5f1f7115f4e4e404b873512506da5a28, type: 3}
-  - {fileID: 21300000, guid: 267c26a8f2ce048b48297d18c1ede3d4, type: 3}
   - {fileID: 21300000, guid: 72ce7ffe919c54427bda6f8674a4dbad, type: 3}
-  - {fileID: 21300000, guid: a3fca692b60a4432087351255190a672, type: 3}
   - {fileID: 21300000, guid: bb7479f9bc538498f8be61ab8e73b3de, type: 3}
   - {fileID: 21300000, guid: f5a677c2a456b4c0cb53a948126c4b40, type: 3}
   - {fileID: 21300000, guid: d6dcdc8f06efe4a829ca0b3525b0c751, type: 3}
-  - {fileID: 21300000, guid: 14ebc01b7516c4a298f931bbcc883a48, type: 3}
   - {fileID: 21300000, guid: 01e22910e451e440498c13ef8dde1020, type: 3}
-  - {fileID: 21300000, guid: 91795ca6df3704df6a2e65da8179204a, type: 3}
   - {fileID: 21300000, guid: 4f3059ab1a0204791af3207f97a567f2, type: 3}
-  - {fileID: 21300000, guid: 7fcbc7d4e9263438ab90a7567622f473, type: 3}
   - {fileID: 21300000, guid: e81075204aa3f4c418ca1beb7ad173a5, type: 3}
   - {fileID: 21300000, guid: ad7acf961e9d44c79a11869205243777, type: 3}
   - {fileID: 21300000, guid: 57561b91cde5b4ad9879d408bf31f211, type: 3}
-  - {fileID: 21300000, guid: 1ddcf5cdeca144bb1b9cf67d248abea5, type: 3}
   - {fileID: 21300000, guid: 59b3dce97d550452eab44833c433eafd, type: 3}
-  - {fileID: 21300000, guid: cbec2b78c46f9444d95d3895676e8160, type: 3}
   - {fileID: 21300000, guid: 59f8ff3a4e15a4a7a8fb3f140f5f28cf, type: 3}
   - {fileID: 21300000, guid: 002e834edded84b829d4b4caadfce9e4, type: 3}
   - {fileID: 21300000, guid: f2ab88e38934c452fa1c8a6c582e94d8, type: 3}
   - {fileID: 21300000, guid: b03584f9283fa4b98b447af95c0df6c7, type: 3}
   - {fileID: 21300000, guid: f4bb3ecc6e3374d4e8d5e01b42e009c8, type: 3}
-  - {fileID: 21300000, guid: da17042763adf4259a5be1476fb2d28d, type: 3}
   rendererDelegate: {fileID: 700615083}
   useSharedMaterial: 1
   doLoopAnimation: 1
@@ -52421,7 +52384,6 @@ MonoBehaviour:
   SlotStart_Button: {fileID: 2031007053}
   AutoSpin_Button: {fileID: 1537542526}
   AutoSpinStop_Button: {fileID: 1548522347}
-  MaxBet_Button: {fileID: 0}
   TBetPlus_Button: {fileID: 674644335}
   TBetMinus_Button: {fileID: 285017820}
   Turbo_Button: {fileID: 548611019}
@@ -52683,7 +52645,6 @@ MonoBehaviour:
   TotalLines_text: {fileID: 1279347199}
   audioController: {fileID: 1030743558465206379}
   uiManager: {fileID: 377874625}
-  _bonusManager: {fileID: 0}
   FSBoard_Object: {fileID: 997420247}
   FSnum_text: {fileID: 609149338}
   Image_Prefab: {fileID: 595047196131445314, guid: 04c659a2f5ec249f5be006eb52752781, type: 3}

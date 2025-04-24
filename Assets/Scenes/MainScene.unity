@@ -252,7 +252,7 @@ MonoBehaviour:
   StartOnAwake: 0
   StartonEnable: 1
   currentAnimationState: 0
-  AnimationSpeed: 32
+  AnimationSpeed: 50
   delayBetweenLoop: 0
 --- !u!114 &10606422
 MonoBehaviour:
@@ -38682,7 +38682,7 @@ MonoBehaviour:
   StartOnAwake: 0
   StartonEnable: 1
   currentAnimationState: 0
-  AnimationSpeed: 32
+  AnimationSpeed: 50
   delayBetweenLoop: 0
 --- !u!114 &1451462379
 MonoBehaviour:
@@ -39541,7 +39541,7 @@ MonoBehaviour:
   StartOnAwake: 0
   StartonEnable: 1
   currentAnimationState: 0
-  AnimationSpeed: 32
+  AnimationSpeed: 50
   delayBetweenLoop: 0
 --- !u!114 &1477890087
 MonoBehaviour:
@@ -43060,7 +43060,7 @@ MonoBehaviour:
   StartOnAwake: 0
   StartonEnable: 1
   currentAnimationState: 0
-  AnimationSpeed: 32
+  AnimationSpeed: 50
   delayBetweenLoop: 0
 --- !u!114 &1639242294
 MonoBehaviour:
@@ -43357,7 +43357,7 @@ MonoBehaviour:
   StartOnAwake: 0
   StartonEnable: 1
   currentAnimationState: 0
-  AnimationSpeed: 32
+  AnimationSpeed: 50
   delayBetweenLoop: 0
 --- !u!114 &1645461132
 MonoBehaviour:

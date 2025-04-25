@@ -89,6 +89,9 @@ public class SlotBehaviour : MonoBehaviour
     [SerializeField]
     private TMP_Text TotalLines_text;
 
+    [SerializeField]
+    private GameObject TotalWinGameObject;
+
     [Header("Audio Management")]
     [SerializeField]
     private AudioController audioController;
@@ -148,6 +151,9 @@ public class SlotBehaviour : MonoBehaviour
 
     private bool GoldWildCompleted;
     private bool IsAllofKindAnimCompleted;
+    [SerializeField] private List<GameObject> GoldWildEffect;
+    [SerializeField] private GameObject FreeGameBottomPanel;
+
 
 
     private void Start()
@@ -176,6 +182,7 @@ public class SlotBehaviour : MonoBehaviour
         if (AutoSpinStop_Button) AutoSpinStop_Button.onClick.AddListener(StopAutoSpin);
 
         if (FSBoard_Object) FSBoard_Object.SetActive(false);
+        if(FreeGameBottomPanel) FreeGameBottomPanel.SetActive(false);
 
         tweenHeight = (15 * IconSizeFactor) - 280;
     }
@@ -267,6 +274,8 @@ public class SlotBehaviour : MonoBehaviour
         if (!IsFreeSpin)
         {
             if (FSBoard_Object) FSBoard_Object.SetActive(true);
+            if(FreeGameBottomPanel) FreeGameBottomPanel.SetActive(true);
+
             IsFreeSpin = true;
             ToggleButtonGrp(false);
 
@@ -284,7 +293,7 @@ public class SlotBehaviour : MonoBehaviour
         int i = 0;
         while (i < spinchances)
         {
-            if (FSnum_text) FSnum_text.text = "FREE SPINS " + uiManager.FreeSpins.ToString();
+            if (FSnum_text) FSnum_text.text = uiManager.FreeSpins.ToString();
             uiManager.FreeSpins--;
             StartSlots();
             yield return tweenroutine;
@@ -292,6 +301,7 @@ public class SlotBehaviour : MonoBehaviour
             i++;
         }
         if (FSBoard_Object) FSBoard_Object.SetActive(false);
+        if(FreeGameBottomPanel) FreeGameBottomPanel.SetActive(false);
         if (WasAutoSpinOn)
         {
             AutoSpin();
@@ -504,6 +514,8 @@ public class SlotBehaviour : MonoBehaviour
         }
         DisableFrameHideLayout();
         ResetPayoutLines();
+        if(TotalWinGameObject) TotalWinGameObject.GetComponent<ImageAnimation>().StopAnimation();
+
         tweenroutine = StartCoroutine(TweenRoutine());
     }
     private void ResetPayoutLines()
@@ -609,6 +621,10 @@ public class SlotBehaviour : MonoBehaviour
             SpinDelay = 0.2f;
         }
         if (TotalWin_text) TotalWin_text.text = SocketManager.playerdata.currentWining.ToString("F3");
+        if(SocketManager.playerdata.currentWining>0) 
+        {
+           if(TotalWinGameObject) TotalWinGameObject.GetComponent<ImageAnimation>().StartAnimation();
+        }
         BalanceTween?.Kill();
         if (Balance_text) Balance_text.text = SocketManager.playerdata.Balance.ToString("F3");
         if (SocketManager.resultData.goldWildCol.Count > 0)
@@ -728,12 +744,22 @@ public class SlotBehaviour : MonoBehaviour
             for (int i = 0; i < GoldColumnCount; i++)
             {
                 int index = Convert.ToInt32(SocketManager.resultData.goldWildCol[i]); // if goldWildCol is List<object>
+                GoldWildEffect[index].SetActive(true);
+            }
+            yield return new WaitForSeconds(2.5f);
+            for (int i = 0; i < GoldColumnCount; i++)
+            {
+                int index = Convert.ToInt32(SocketManager.resultData.goldWildCol[i]); // if goldWildCol is List<object>
                 GoldCoinSpawningParticals[index].SetActive(true);
             }
 
             // Wait for 3 seconds after the loop
             yield return new WaitForSeconds(4f);
             foreach (GameObject go in GoldCoinSpawningParticals)
+            {
+                go.SetActive(false);
+            }
+            foreach (GameObject go in GoldWildEffect)
             {
                 go.SetActive(false);
             }

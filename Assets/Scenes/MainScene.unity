@@ -13466,7 +13466,7 @@ MonoBehaviour:
   bonusdata: []
   _jsManager: {fileID: 500036493}
   JSManager: {fileID: 1029290966}
-  testToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3NjU1MTA1MGJjMDc4ODcyMWUxYmEwMSIsInVzZXJuYW1lIjoiZGV2MDEiLCJyb2xlIjoicGxheWVyIiwiaWF0IjoxNzQ1Mjk5MTk1LCJleHAiOjE3NDU5MDM5OTV9.rjCU1IzCbxpi4mb6uVpBzUp2xeXBbc7Yk3Y_1XmRI5Q
+  testToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDIyMzU4M2UyYmIxMGQ3NGZlM2IxZiIsInVzZXJuYW1lIjoidGVzdGVyOTkwMCIsInJvbGUiOiJwbGF5ZXIiLCJpYXQiOjE3NDU2NTgzODQsImV4cCI6MTc0NjI2MzE4NH0.kYOqLJHW5cCdWlc-drP-UhdAu9zfGL5skMqT7RWtrcY
 --- !u!114 &500036493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19321,7 +19321,7 @@ MonoBehaviour:
   m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 76.32
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535

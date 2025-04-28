@@ -68,6 +68,8 @@ public class UIManager : MonoBehaviour
     private GameObject FreeSpinMainPopup_Object;
     [SerializeField]
     private GameObject FreeSpinPopup_Object;
+    [SerializeField] private Button SkipFreeSpinAnimation;
+    private bool ShowFreeSpin;
     // [SerializeField]
     // private TMP_Text Free_Text;
 
@@ -210,6 +212,9 @@ public class UIManager : MonoBehaviour
         if (SkipWinAnimation) SkipWinAnimation.onClick.RemoveAllListeners();
         if (SkipWinAnimation) SkipWinAnimation.onClick.AddListener(SkipWin);
 
+        if (SkipFreeSpinAnimation) SkipFreeSpinAnimation.onClick.RemoveAllListeners();
+        if (SkipFreeSpinAnimation) SkipFreeSpinAnimation.onClick.AddListener(SkipFreeSpin);
+
         infoLeftButton.onClick.AddListener(GoToPreviousInfoPage);
         infoRightButton.onClick.AddListener(GoToNextInfoPage);
         infoButton.onClick.AddListener(OpenInfoPanel);
@@ -260,8 +265,9 @@ public class UIManager : MonoBehaviour
         slotManager.FreeSpin(spins);
     }
 
-    internal void FreeSpinProcess(int spins)
+    internal IEnumerator FreeSpinProcess(int spins)
     {
+        ShowFreeSpin=true;
         int ExtraSpins = spins - FreeSpins;
         FreeSpins = spins;
         Debug.Log("ExtraSpins: " + ExtraSpins);
@@ -271,8 +277,17 @@ public class UIManager : MonoBehaviour
        // if (Free_Text) Free_Text.text = ExtraSpins.ToString() + " Free spins awarded.";
         DOVirtual.DelayedCall(4f, () =>
         {
-            StartFreeSpins(spins);
+            ShowFreeSpin=false;
         });
+        yield return new WaitUntil(() => !ShowFreeSpin);
+        StartFreeSpins(spins);
+
+
+    }
+
+    void SkipFreeSpin()
+    {
+       ShowFreeSpin=false;
     }
 
     void SkipWin()

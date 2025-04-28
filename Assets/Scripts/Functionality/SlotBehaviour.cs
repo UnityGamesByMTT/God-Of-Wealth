@@ -674,7 +674,7 @@ public class SlotBehaviour : MonoBehaviour
                     FreeSpinRoutine = null;
                 }
             }
-            uiManager.FreeSpinProcess((int)SocketManager.resultData.count);
+            StartCoroutine(uiManager.FreeSpinProcess((int)SocketManager.resultData.count));
             if (IsAutoSpin)
             {
                 WasAutoSpinOn = true;

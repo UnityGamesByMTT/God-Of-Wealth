@@ -275,7 +275,7 @@ public class UIManager : MonoBehaviour
         if (FreeSpinMainPopup_Object) FreeSpinMainPopup_Object.SetActive(true);
         if (FreeSpinPopup_Object) FreeSpinPopup_Object.SetActive(true);
        // if (Free_Text) Free_Text.text = ExtraSpins.ToString() + " Free spins awarded.";
-        DOVirtual.DelayedCall(4f, () =>
+        DOVirtual.DelayedCall(2f, () =>
         {
             ShowFreeSpin=false;
         });

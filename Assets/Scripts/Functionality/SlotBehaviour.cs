@@ -405,7 +405,7 @@ public class SlotBehaviour : MonoBehaviour
                 {
                     animScript.textureArray.Add(Coin_Sprite[i]);
                 }
-                animScript.AnimationSpeed = 15f;
+                animScript.AnimationSpeed = 11f;
                 break;
 
             case 1:
@@ -421,7 +421,7 @@ public class SlotBehaviour : MonoBehaviour
                 {
                     animScript.textureArray.Add(Looket_Sprite[i]);
                 }
-                animScript.AnimationSpeed = 15f;
+                animScript.AnimationSpeed = 11f;
                 break;
 
             case 3:
@@ -437,7 +437,7 @@ public class SlotBehaviour : MonoBehaviour
                 {
                     animScript.textureArray.Add(GirlAsset_Sprite[i]);
                 }
-                animScript.AnimationSpeed = 15f;
+                animScript.AnimationSpeed = 9f;
                 break;
 
             case 5:
@@ -445,7 +445,7 @@ public class SlotBehaviour : MonoBehaviour
                 {
                     animScript.textureArray.Add(BoyAsset_Sprite[i]);
                 }
-                animScript.AnimationSpeed = 30f;
+                animScript.AnimationSpeed = 15f;
                 break;
 
             case 6:
@@ -453,7 +453,7 @@ public class SlotBehaviour : MonoBehaviour
                 {
                     animScript.textureArray.Add(BlueKing_Sprite[i]);
                 }
-                animScript.AnimationSpeed = 15f;
+                animScript.AnimationSpeed = 12f;
                 break;
 
             case 7:
@@ -461,7 +461,7 @@ public class SlotBehaviour : MonoBehaviour
                 {
                     animScript.textureArray.Add(ChineseMan_Sprite[i]);
                 }
-                animScript.AnimationSpeed = 15f;
+                animScript.AnimationSpeed = 11f;
                 break;
 
             case 8:
@@ -477,7 +477,7 @@ public class SlotBehaviour : MonoBehaviour
                 {
                     animScript.textureArray.Add(Wild_Sprite[i]);
                 }
-                animScript.AnimationSpeed = 15f;
+                animScript.AnimationSpeed = 7f;
                 break;
 
             case 10:
@@ -559,7 +559,7 @@ public class SlotBehaviour : MonoBehaviour
             for (int i = 0; i < numberOfSlots; i++)
             {
                 InitializeTweening(Slot_Transform[i]);
-                yield return new WaitForSeconds(0.1f);
+               // yield return new WaitForSeconds(0.1f);
             }
         }
 
@@ -916,7 +916,7 @@ public class SlotBehaviour : MonoBehaviour
     private void InitializeTweening(Transform slotTransform)
     {
         slotTransform.localPosition = new Vector2(slotTransform.localPosition.x, 0);
-        Tweener tweener = slotTransform.DOLocalMoveY(-tweenHeight, 0.1f).SetLoops(-1, LoopType.Restart).SetDelay(0);
+        Tweener tweener = slotTransform.DOLocalMoveY(-tweenHeight, 0.07f).SetLoops(-1, LoopType.Restart).SetDelay(0);
         tweener.Play();
         alltweens.Add(tweener);
     }

@@ -1559,7 +1559,7 @@ MonoBehaviour:
   StartOnAwake: 0
   StartonEnable: 1
   currentAnimationState: 0
-  AnimationSpeed: 30
+  AnimationSpeed: 20
   delayBetweenLoop: 0
 --- !u!114 &58257765
 MonoBehaviour:
@@ -3918,7 +3918,7 @@ MonoBehaviour:
   StartOnAwake: 0
   StartonEnable: 1
   currentAnimationState: 0
-  AnimationSpeed: 10
+  AnimationSpeed: 15
   delayBetweenLoop: 0
 --- !u!114 &129863490
 MonoBehaviour:
@@ -12340,7 +12340,7 @@ MonoBehaviour:
   StartOnAwake: 0
   StartonEnable: 1
   currentAnimationState: 0
-  AnimationSpeed: 30
+  AnimationSpeed: 20
   delayBetweenLoop: 0
 --- !u!1 &443830049
 GameObject:
@@ -13467,7 +13467,7 @@ MonoBehaviour:
   bonusdata: []
   _jsManager: {fileID: 500036493}
   JSManager: {fileID: 1029290966}
-  testToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDIyMzU4M2UyYmIxMGQ3NGZlM2IxZiIsInVzZXJuYW1lIjoidGVzdGVyOTkwMCIsInJvbGUiOiJwbGF5ZXIiLCJpYXQiOjE3NDY0MjgzMzQsImV4cCI6MTc0NzAzMzEzNH0.jziumfImc9tBJTgYsLAW76qEPWJYpGWbzJOE_P6eNYg
+  testToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MDIyMzU4M2UyYmIxMGQ3NGZlM2IxZiIsInVzZXJuYW1lIjoidGVzdGVyOTkwMCIsInJvbGUiOiJwbGF5ZXIiLCJpYXQiOjE3NDY1MDU3MzEsImV4cCI6MTc0NzExMDUzMX0.F6lytZQHbYOebK91gCUAhV0C_FtZUvPOpQRNhyCkt24
 --- !u!114 &500036493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30189,7 +30189,7 @@ MonoBehaviour:
   StartOnAwake: 0
   StartonEnable: 1
   currentAnimationState: 0
-  AnimationSpeed: 30
+  AnimationSpeed: 20
   delayBetweenLoop: 0
 --- !u!114 &1101160303
 MonoBehaviour:

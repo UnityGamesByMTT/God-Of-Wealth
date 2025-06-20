@@ -182,7 +182,7 @@ public class SlotBehaviour : MonoBehaviour
         if (AutoSpinStop_Button) AutoSpinStop_Button.onClick.AddListener(StopAutoSpin);
 
         if (FSBoard_Object) FSBoard_Object.SetActive(false);
-        if(FreeGameBottomPanel) FreeGameBottomPanel.SetActive(false);
+        if (FreeGameBottomPanel) FreeGameBottomPanel.SetActive(false);
 
         tweenHeight = (15 * IconSizeFactor) - 280;
     }
@@ -274,7 +274,7 @@ public class SlotBehaviour : MonoBehaviour
         if (!IsFreeSpin)
         {
             if (FSBoard_Object) FSBoard_Object.SetActive(true);
-            if(FreeGameBottomPanel) FreeGameBottomPanel.SetActive(true);
+            if (FreeGameBottomPanel) FreeGameBottomPanel.SetActive(true);
 
             IsFreeSpin = true;
             ToggleButtonGrp(false);
@@ -301,7 +301,7 @@ public class SlotBehaviour : MonoBehaviour
             i++;
         }
         if (FSBoard_Object) FSBoard_Object.SetActive(false);
-        if(FreeGameBottomPanel) FreeGameBottomPanel.SetActive(false);
+        if (FreeGameBottomPanel) FreeGameBottomPanel.SetActive(false);
         if (WasAutoSpinOn)
         {
             AutoSpin();
@@ -514,7 +514,7 @@ public class SlotBehaviour : MonoBehaviour
         }
         DisableFrameHideLayout();
         ResetPayoutLines();
-        if(TotalWinGameObject) TotalWinGameObject.GetComponent<ImageAnimation>().StopAnimation();
+        if (TotalWinGameObject) TotalWinGameObject.GetComponent<ImageAnimation>().StopAnimation();
 
         tweenroutine = StartCoroutine(TweenRoutine());
     }
@@ -559,7 +559,7 @@ public class SlotBehaviour : MonoBehaviour
             for (int i = 0; i < numberOfSlots; i++)
             {
                 InitializeTweening(Slot_Transform[i]);
-               // yield return new WaitForSeconds(0.1f);
+                // yield return new WaitForSeconds(0.1f);
             }
         }
 
@@ -621,9 +621,9 @@ public class SlotBehaviour : MonoBehaviour
             SpinDelay = 0.2f;
         }
         if (TotalWin_text) TotalWin_text.text = SocketManager.playerdata.currentWining.ToString("F3");
-        if(SocketManager.playerdata.currentWining>0) 
+        if (SocketManager.playerdata.currentWining > 0)
         {
-           if(TotalWinGameObject) TotalWinGameObject.GetComponent<ImageAnimation>().StartAnimation();
+            if (TotalWinGameObject) TotalWinGameObject.GetComponent<ImageAnimation>().StartAnimation();
         }
         BalanceTween?.Kill();
         if (Balance_text) Balance_text.text = SocketManager.playerdata.Balance.ToString("F3");
@@ -738,18 +738,20 @@ public class SlotBehaviour : MonoBehaviour
     public IEnumerator CheckForGoldWildColumn()
     {
         int GoldColumnCount = SocketManager.resultData.goldWildCol.Count;
+        List<int> GoldColumnIndex = new List<int>();
         if (GoldColumnCount > 0)
         {
             CheckPopups = true;
             for (int i = 0; i < GoldColumnCount; i++)
             {
-                int index = Convert.ToInt32(SocketManager.resultData.goldWildCol[i]); // if goldWildCol is List<object>
+                int index = Convert.ToInt32(SocketManager.resultData.goldWildCol[i]); 
                 GoldWildEffect[index].SetActive(true);
+                GoldColumnIndex.Add(index);
             }
             yield return new WaitForSeconds(2.5f);
             for (int i = 0; i < GoldColumnCount; i++)
             {
-                int index = Convert.ToInt32(SocketManager.resultData.goldWildCol[i]); // if goldWildCol is List<object>
+                int index = Convert.ToInt32(SocketManager.resultData.goldWildCol[i]); 
                 GoldCoinSpawningParticals[index].SetActive(true);
             }
 
@@ -763,8 +765,23 @@ public class SlotBehaviour : MonoBehaviour
             {
                 go.SetActive(false);
             }
+            yield return new WaitForSeconds(0.2f);
+            foreach (int a in GoldColumnIndex)
+            {
+              SetGoldWildColumn(a);
+            }
+            yield return new WaitForSeconds(1f);
             GoldWildCompleted = true;
 
+
+        }
+    }
+    private void SetGoldWildColumn(int columnindex)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, 11);
+            Tempimages[columnindex].slotImages[j].sprite = myImages[9];
         }
     }
     private IEnumerator CheckForAllOfKind()

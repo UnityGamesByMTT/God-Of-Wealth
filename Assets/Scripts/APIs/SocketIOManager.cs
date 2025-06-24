@@ -24,7 +24,6 @@ public class SocketIOManager : MonoBehaviour
     internal Root initialRootData = null;
     internal Root resultData = null;
     internal Player playerdata = null;
-    internal Payload Resultpayload { get; set; }
     [SerializeField]
     internal List<string> bonusdata = null;
     //WebSocket currentSocket = null;
@@ -385,8 +384,6 @@ public class SocketIOManager : MonoBehaviour
                     {
                         Debug.Log(jsonObject);
                         List<string> LinesString = ConvertListListIntToListString(initialData.lines);
-                        // List<string> InitialReels = ConvertListOfListsToStrings(initialData.Reel);
-                        // InitialReels = RemoveQuotes(InitialReels);
                         PopulateSlotSocket(LinesString);
                         SetInit = true;
                     }
@@ -399,13 +396,8 @@ public class SocketIOManager : MonoBehaviour
             case "ResultData":
                 {
                     Debug.Log(jsonObject);
-                    // myData.gameData.FinalResultReel = ConvertListOfListsToStrings(myData.message.GameData.ResultReel);
-                    // myData.message.GameData.FinalsymbolsToEmit = TransformAndRemoveRecurring(myData.message.GameData.symbolsToEmit);
-
-                    Resultpayload = myData.payload;
                     playerdata = myData.player;
                     resultData = myData;
-                    // playerdata = myData.message.PlayerData;
                     isResultdone = true;
                     break;
                 }

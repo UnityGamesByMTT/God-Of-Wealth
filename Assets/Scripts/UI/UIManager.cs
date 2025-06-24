@@ -32,7 +32,7 @@ public class UIManager : MonoBehaviour
     private GameObject MainPopup_Object;
 
     [Header("Paytable Popup")]
-  
+
     [SerializeField]
     private TMP_Text Scatter_Text;
     [SerializeField]
@@ -267,17 +267,17 @@ public class UIManager : MonoBehaviour
 
     internal IEnumerator FreeSpinProcess(int spins)
     {
-        ShowFreeSpin=true;
+        ShowFreeSpin = true;
         int ExtraSpins = spins - FreeSpins;
         FreeSpins = spins;
         Debug.Log("ExtraSpins: " + ExtraSpins);
         Debug.Log("Total Spins: " + spins);
         if (FreeSpinMainPopup_Object) FreeSpinMainPopup_Object.SetActive(true);
         if (FreeSpinPopup_Object) FreeSpinPopup_Object.SetActive(true);
-       // if (Free_Text) Free_Text.text = ExtraSpins.ToString() + " Free spins awarded.";
+        // if (Free_Text) Free_Text.text = ExtraSpins.ToString() + " Free spins awarded.";
         DOVirtual.DelayedCall(2f, () =>
         {
-            ShowFreeSpin=false;
+            ShowFreeSpin = false;
         });
         yield return new WaitUntil(() => !ShowFreeSpin);
         StartFreeSpins(spins);
@@ -287,7 +287,7 @@ public class UIManager : MonoBehaviour
 
     void SkipFreeSpin()
     {
-       ShowFreeSpin=false;
+        ShowFreeSpin = false;
     }
 
     void SkipWin()
@@ -328,73 +328,67 @@ public class UIManager : MonoBehaviour
 
     internal void ADfunction()
     {
-       // OpenPopup(ADPopup_Object);
+        // OpenPopup(ADPopup_Object);
     }
 
-    internal void InitialiseUIData(string SupportUrl, string AbtImgUrl, string TermsUrl, string PrivacyUrl, Paylines symbolsText)
+    internal void InitialiseUIData(Paylines symbolsText)
     {
-        StartCoroutine(DownloadImage(AbtImgUrl));
         PopulateSymbolsPayout(symbolsText);
 
-        SetMultiplierinfo();
+         SetMultiplierinfo();
     }
 
     private void PopulateSymbolsPayout(Paylines paylines)
     {
-        int count = 0;
         for (int i = 0; i < SymbolsText.Length; i++)
         {
             var symbol = paylines.symbols[i];
 
-            if (symbol.Multiplier[0][0] != 0)
+            if (symbol.multiplier[0] != 0)
             {
-                SymbolsText[i].Text5x.text = symbol.Multiplier[0][0].ToString();
+                SymbolsText[i].Text5x.text = symbol.multiplier[0].ToString();
             }
             else
             {
                 SymbolsText[i].Text5x.text = "";
             }
 
-            if (symbol.Multiplier[1][0] != 0)
+            if (symbol.multiplier[1] != 0)
             {
-                SymbolsText[i].Text4x.text = symbol.Multiplier[1][0].ToString();
+                SymbolsText[i].Text4x.text = symbol.multiplier[1].ToString();
             }
             else
             {
                 SymbolsText[i].Text4x.text = "";
             }
 
-            if (symbol.Multiplier[2][0] != 0)
+            if (symbol.multiplier[2] != 0)
             {
-                SymbolsText[i].Text3x.text = symbol.Multiplier[2][0].ToString();
+                SymbolsText[i].Text3x.text = symbol.multiplier[2].ToString();
             }
             else
             {
                 SymbolsText[i].Text3x.text = "";
             }
 
-            Debug.Log("Symbol info: " + symbol.Name);
+            Debug.Log("Symbol info: " + symbol.name);
         }
 
 
         for (int i = 0; i < paylines.symbols.Count; i++)
         {
-            if (paylines.symbols[i].Name.ToUpper() == "SCATTER")
+            if (paylines.symbols[i].name.ToUpper() == "SCATTER")
             {
                 string Description = paylines.symbols[i].description.ToString();
-
                 string modifiedDescription = Description.Replace("\n ", "\n<sprite=0>");
                 if (Scatter_Text) Scatter_Text.text = "<sprite=0>" + modifiedDescription;
-                ScatterFreeSpinstext.Text5x.text = paylines.symbols[i].Multiplier[0][1].ToString() + " FREE SPINS";
-                ScatterFreeSpinstext.Text4x.text = paylines.symbols[i].Multiplier[1][1].ToString() + " FREE SPINS";
-                ScatterFreeSpinstext.Text3x.text = paylines.symbols[i].Multiplier[2][1].ToString() + " FREE SPINS";
             }
-            if (paylines.symbols[i].Name.ToUpper() == "BLUEWILD")
+            if (paylines.symbols[i].name.ToUpper() == "BLUEWILD")
             {
                 if (BlueWild_Text) BlueWild_Text.text = paylines.symbols[i].description.ToString();
             }
 
-            if (paylines.symbols[i].Name.ToUpper() == "GOLDWILD")
+            if (paylines.symbols[i].name.ToUpper() == "GOLDWILD")
             {
                 string Description = paylines.symbols[i].description.ToString();
 
@@ -402,18 +396,22 @@ public class UIManager : MonoBehaviour
                 if (GoldWild_Text) GoldWild_Text.text = "<sprite=0>" + modifiedDescription;
             }
         }
+        
+        if(ScatterFreeSpinstext.Text5x.text!=null) ScatterFreeSpinstext.Text5x.text= socketManager.initialRootData.features.freeSpinCounts[0].ToString()+" FREE SPINS";  // paylines.symbols[i].Multiplier[0][1].ToString() + " FREE SPINS";
+        ScatterFreeSpinstext.Text4x.text = socketManager.initialRootData.features.freeSpinCounts[1].ToString()+" FREE SPINS";
+        ScatterFreeSpinstext.Text3x.text = socketManager.initialRootData.features.freeSpinCounts[2].ToString()+" FREE SPINS";
     }
     private void SetMultiplierinfo()
     {
-        Debug.Log("Set value : 1 count: " + socketManager.initialData.FeatureMults.Count);
+        Debug.Log("Set value : 1 count: " + socketManager.initialRootData.features.allKindMults.Count);
         Debug.Log("InfoMultiplierPageTexts Count: " + InfoMultiplierPageTexts.Count);
 
-        int count = Mathf.Min(socketManager.initialData.FeatureMults.Count, InfoMultiplierPageTexts.Count);
+        int count = Mathf.Min(socketManager.initialRootData.features.allKindMults.Count, InfoMultiplierPageTexts.Count);
 
         for (int i = 0; i < count; i++)
         {
-            Debug.Log("Set value : 2  " + socketManager.initialData.FeatureMults[i]);
-            InfoMultiplierPageTexts[i].text = socketManager.initialData.FeatureMults[i].ToString();
+            Debug.Log("Set value : 2  " + socketManager.initialRootData.features.allKindMults[i]);
+            InfoMultiplierPageTexts[i].text = socketManager.initialRootData.features.allKindMults[i].ToString();
         }
     }
 
@@ -485,7 +483,7 @@ public class UIManager : MonoBehaviour
 
     private void ToggleMusic()
     {
-       if (audioController) audioController.PlayButtonAudio();
+        if (audioController) audioController.PlayButtonAudio();
         Image musicImage = Music_Button.gameObject.GetComponent<Image>();
         isMusic = !isMusic;
         if (isMusic)
@@ -507,7 +505,7 @@ public class UIManager : MonoBehaviour
 
     private void ToggleSound()
     {
-       if (audioController) audioController.PlayButtonAudio();
+        if (audioController) audioController.PlayButtonAudio();
         Image musicImage = Sound_Button.gameObject.GetComponent<Image>();
         isSound = !isSound;
         if (isSound)
@@ -526,32 +524,9 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    private IEnumerator DownloadImage(string url)
-    {
-        // Create a UnityWebRequest object to download the image
-        UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
-
-        // Wait for the download to complete
-        yield return request.SendWebRequest();
-
-        // Check for errors
-        if (request.result == UnityWebRequest.Result.Success)
-        {
-            Texture2D texture = DownloadHandlerTexture.GetContent(request);
-
-            Sprite sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), Vector2.zero);
-
-            // Apply the sprite to the target image
-        }
-        else
-        {
-            Debug.LogError("Error downloading image: " + request.error);
-        }
-    }
-
     private void OpenInfoPanel()
     {
-         if (audioController) audioController.PlayButtonAudio();
+        if (audioController) audioController.PlayButtonAudio();
         infoPanel.SetActive(true);
         UpdateInfoUI();
     }

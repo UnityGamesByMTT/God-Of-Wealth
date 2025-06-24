@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 using DG.Tweening;
 
-public class ManageLineButtons : MonoBehaviour, IPointerEnterHandler,IPointerExitHandler, IPointerUpHandler,IPointerDownHandler
+public class ManageLineButtons : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler, IPointerDownHandler
 {
 
 	[SerializeField]
@@ -15,31 +15,17 @@ public class ManageLineButtons : MonoBehaviour, IPointerEnterHandler,IPointerExi
 	private TMP_Text num_text;
 	private int buttonIndex;
 
-    void Awake()
-    {
-        buttonIndex=GetButtonIndexByName(this.gameObject.name);
-    }
-    public void OnPointerEnter(PointerEventData eventData)
+	void Awake()
 	{
-		//if (Application.platform == RuntimePlatform.WebGLPlayer && !Application.isMobilePlatform)
-		//{
-			//Debug.Log("run on pointer enter");
-			//slotManager.GenerateStaticLine(num_text);
-			Debug.Log("@@ lines index 1  "+ buttonIndex);
-			slotManager.PayoutLines[buttonIndex].SetActive(true);
-		//}
+		buttonIndex = GetButtonIndexByName(this.gameObject.name);
+	}
+	public void OnPointerEnter(PointerEventData eventData)
+	{
+		slotManager.PayoutLines[buttonIndex].SetActive(true);
 	}
 	public void OnPointerExit(PointerEventData eventData)
 	{
-		//if (Application.platform == RuntimePlatform.WebGLPlayer && !Application.isMobilePlatform)
-		//{
-			//Debug.Log("run on pointer exit");
-			//slotManager.DestroyStaticLine();
-			Debug.Log("@@ lines index 2  "+ buttonIndex);
-
-			slotManager.PayoutLines[buttonIndex].SetActive(false);
-
-		//}
+		slotManager.PayoutLines[buttonIndex].SetActive(false);
 	}
 	public void OnPointerDown(PointerEventData eventData)
 	{
@@ -48,7 +34,7 @@ public class ManageLineButtons : MonoBehaviour, IPointerEnterHandler,IPointerExi
 			this.gameObject.GetComponent<Button>().Select();
 			//Debug.Log("run on pointer down");
 			//slotManager.GenerateStaticLine(num_text);
-			Debug.Log("@@ lines index 3  "+ buttonIndex);
+			Debug.Log("@@ lines index 3  " + buttonIndex);
 
 			slotManager.PayoutLines[buttonIndex].SetActive(true);
 
@@ -65,26 +51,26 @@ public class ManageLineButtons : MonoBehaviour, IPointerEnterHandler,IPointerExi
 			{
 				this.gameObject.GetComponent<Button>().spriteState = default;
 				EventSystem.current.SetSelectedGameObject(null);
-			 });
+			});
 		}
 	}
 
 	int GetButtonIndexByName(string buttonName)
-{
-    switch (buttonName)
-    {
-        case "Button1": return 0;
-        case "Button2": return 1;
-        case "Button3": return 2;
-        case "Button4": return 3;
-        case "Button5": return 4;
-        case "Button6": return 5;
-        case "Button7": return 6;
-        case "Button8": return 7;
-        case "Button9": return 8;
-        default:
-            Debug.LogWarning("Unrecognized button name: " + buttonName);
-            return -1;
-    }
-}
+	{
+		switch (buttonName)
+		{
+			case "Button1": return 0;
+			case "Button2": return 1;
+			case "Button3": return 2;
+			case "Button4": return 3;
+			case "Button5": return 4;
+			case "Button6": return 5;
+			case "Button7": return 6;
+			case "Button8": return 7;
+			case "Button9": return 8;
+			default:
+				Debug.LogWarning("Unrecognized button name: " + buttonName);
+				return -1;
+		}
+	}
 }
